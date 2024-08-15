@@ -1,0 +1,1 @@
+export const logo = 'https://logos.textgiraffe.com/logos/logo-name/Aziz-designstyle-boots-m.png'
