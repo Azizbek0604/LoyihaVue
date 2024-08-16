@@ -23,7 +23,7 @@ export default {
   },
   methods: {
     toHomeHandler(){
-      return this.$router.push('/')
+      return this.$router.push({name: 'home'})
     }
   }
 }
