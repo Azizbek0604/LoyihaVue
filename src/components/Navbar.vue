@@ -8,6 +8,7 @@
       <RouterLink :to="{ name: 'home' }" class="me-3 py-2 link-body-emphasis text-decoration-none">
         {{currensUser.username }}
       </RouterLink>
+      <a href="#" class="me-3 py-2 link-body-emphasis text-decoration-none" @click="logout">Logout</a>
     </template>
     <template v-if="isAnonymous">
       <RouterLink :to="{ name: 'login' }" class="me-3 py-2 link-body-emphasis text-decoration-none">
@@ -42,6 +43,9 @@ export default {
   methods: {
     toHomeHandler() {
       this.$router.push({ name: 'home' });
+    },
+    logout() {
+      return this.$store.dispatch('logout')
     }
   }
 };

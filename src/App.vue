@@ -14,6 +14,9 @@ import {RouterView} from 'vue-router'
 export default {
   components: {
     Navbar,
+  },
+  mounted() {
+    this.$store.dispatch('getUser')
   }
 }
 </script>

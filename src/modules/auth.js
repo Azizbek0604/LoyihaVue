@@ -1,4 +1,4 @@
-import { setItem } from "@/helper/persistaneStorage"
+import { removeItem, setItem } from "@/helper/persistaneStorage"
 import AuthServise from "@/service/auth"
 import { gettersTypes } from "./types"
 
@@ -57,6 +57,23 @@ const mutations = {
         state.errors = payload.errors  
         state.isLoggedIn = false 
     },
+    currentUserStart(state) {
+        state.isLoading = true
+    },
+    currentUserSuccess(state, payload) {
+        state.isLoading = false
+        state.user = payload 
+        state.isLoggedIn = true
+    },
+    currentUserFailur(state, payload) {
+        state.isLoading = false
+        state.user = null  
+        state.isLoggedIn = false 
+    },
+    logout(state){
+        state.user = null,
+        state.isLoggedIn = false
+    }
 }
 
 const actions = {
@@ -88,6 +105,21 @@ const actions = {
             }) 
         })
     },
+    getUser(context){
+        return new Promise((resolve, reject) => {
+            context.commit('currentUserStart')
+            AuthServise.getUser()
+            .then(response => {
+                context.commit('loginSuccess', response.data.user)
+                resolve(response.data.user)
+            })
+            .catch(() => context.commit('currentUserFailur'))
+        })
+    },
+    logout(context){
+        context.commit('logout')
+        removeItem('token')
+    }
 }
 
 export default{state, mutations, actions, getters}
