@@ -19,7 +19,7 @@
 import input from '@/ui-components/input.vue'
 import { logo } from '../constants'
 import ValidationErrorVue from './ValidationError.vue'
-
+import {mapState} from 'vuex'
 export default {
   components: { input },
  data() {
@@ -33,7 +33,7 @@ export default {
   components:{
     ValidationErrorVue
   },
-  computed: {
+  computed:{
     ...mapState({
       isLoading: state => state.auth.isLoading,
       validationErrors: state => state.auth.errors,

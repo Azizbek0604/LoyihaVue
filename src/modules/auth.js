@@ -4,35 +4,44 @@ import AuthServise from "@/service/auth"
 const state = {
     isLoading: false,
     user: null,
-    errors: null 
+    errors: null,
+    isLoggedIn: null, 
 }
 
 const mutations = {
     registerStart(state){
         state.isLoading = true
-        state.user = null,
+        state.user = null
         state.errors = null
+        state.isLoggedIn = null 
+
     },
     registerSuccess(state, payload){
         state.isLoading = false
         state.user = payload 
+        state.isLoggedIn = true
     },
     registerFailur(state, payload){
         state.isLoading = false
-        state.errors = payload.errors   
+        state.errors = payload.errors  
+        state.isLoggedIn = false
+
     },
     loginStart(state) {
         state.isLoading = true
         state.user = null,
         state.errors = null
+        state.isLoggedIn = null
     },
     loginSuccess(state, payload) {
         state.isLoading = false
         state.user = payload 
+        state.isLoggedIn = true
     },
     loginFailur(state, payload) {
         state.isLoading = false
         state.errors = payload.errors  
+        state.isLoggedIn = false 
     },
 }
 
