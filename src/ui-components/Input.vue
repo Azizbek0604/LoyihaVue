@@ -1,6 +1,10 @@
 <template>
     <div class="form-floating mt-3">
-      <input :type="type" class="form-control" :id="label" :placeholder="label" @input="updateInput" :value="modelValue">
+      <input :type="type" 
+      class="form-control" 
+      :id="label" :placeholder="label" 
+      @input="updateInput" 
+      :value="modelValue">
       <label :for="label">{{ label }}</label>
     </div>
 </template>
@@ -9,15 +13,9 @@
 export default {
     name: 'Input',
     props: {
-    label: {
+      label: String,
       type: String,
-      required: true
-    },
-    type: {
-      type: String,
-      default: 'text'
-    },
-    modelValue: [String, Number],
+      modelValue: [String, Number],
     },
     methods: {
       updateInput(e){

@@ -1,11 +1,10 @@
-import { Login } from '@/components';
 import axios from './axios'
 
-const authServise = {
+const AuthServise = {
     register(user) {
         return axios.post('/users', {user})
     },
     
 }
 
-export default authServise;
+export default AuthServise;

@@ -1,4 +1,5 @@
-import authServise from "@/service/auth"
+import { setItem } from "@/helper/persistaneStorage"
+import AuthServise from "@/service/auth"
 
 const state = {
     isLoading: false,
@@ -26,8 +27,10 @@ const actions = {
     register(context, user){
         return new Promise((resolve, reject) => {
             context.commit('registerStart')
-            authServise.register(user).then(response => {
+            AuthServise.register(user)
+                .then(response => {
                 context.commit('registerSuccess', response.data.user)
+                setItem('token', response.data.user.token)
                 resolve(response.data.user)
             }).catch(error => {
                 context.commit('registerFailur', error.response.data)
