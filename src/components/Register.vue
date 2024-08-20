@@ -34,12 +34,10 @@ export default {
     ValidationErrorVue
   },
   computed: {
-    isLoading(){
-      return this.$store.state.auth.isLoading
-    },
-    validationErrors(){
-      return this.$store.state.auth.errors
-    }
+    ...mapState({
+      isLoading: state => state.auth.isLoading,
+      validationErrors: state => state.auth.errors,
+    })
   },
   methods: {
     submitHandler(e){
