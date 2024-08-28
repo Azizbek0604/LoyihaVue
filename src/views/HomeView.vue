@@ -1,12 +1,20 @@
 <template>
     <div>
-        <h1>home</h1>
+       <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+       <Loader v-if="isLoading" class="offset-md-6"/>
+       <ArticleCardVue v-else v-for="article in data" :article="article" :key="article.id"
+      />
+       </div>
     </div>
 </template>
 
 <script>
+import ArticleCardVue from '@/components/ArticleCard.vue'
 import {mapState} from 'vuex'
-export default { 
+export default {
+components: {
+    ArticleCardVue
+}, 
 computed: {
   ...mapState({
     data: state => state.articles.data,
