@@ -106,7 +106,7 @@ const actions = {
         })
     },
     getUser(context){
-        return new Promise((resolve, reject) => {
+        return new Promise((resolve) => {
             context.commit('currentUserStart')
             AuthServise.getUser()
             .then(response => {

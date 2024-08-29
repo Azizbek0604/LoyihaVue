@@ -1,13 +1,12 @@
-import articles from "@/modules/articles";
 import axios from "./axios";
 
 const ArticleService = {
     articles() {
-        return axios.get('/articles')
+        return axios.get('/articles');
     },
-    articleDetails(slug){
-        return axios.get(`/article/${slug}`)
+    articleDetail(slug) {
+        return axios.get(`/articles/${slug}`);
     }
 }
 
-export default ArticleService
+export default ArticleService;
