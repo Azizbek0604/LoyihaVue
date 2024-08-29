@@ -1,3 +1,4 @@
+import { createApp } from "vue";
 import axios from "./axios";
 
 const ArticleService = {
@@ -6,6 +7,9 @@ const ArticleService = {
     },
     articleDetail(slug) {
         return axios.get(`/articles/${slug}`);
+    },
+    createArticle(article){
+        return axios.post('/articles', {article})
     }
 }
 
